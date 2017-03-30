@@ -46,7 +46,10 @@
 \renewcommand{\Pr}{\textbf{\textsf{Pr}}}
 
 \title{Asmt 4: Frequent Items
-\footnote{{CS6140-Data Mining; \;\; Spring 2017 \hfill}}}
+    \footnote{
+        CS6140-Data Mining; \;\; Spring 2017 \hfill
+    }
+}
 \author{Jesus Zarate}
 \begin{document}
 \maketitle
@@ -60,46 +63,60 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section*{1 Singular Value Decomposition}
 \begin{enumerate}[label=(\Alph*)]
+
+
+%A
 \item Compute and report the L2 norm of the difference between A and Ak for each value of k
       using\\
-      norm(A-Ak,2)
 
 norm(A - Ak, 2)\\
-ans =  9.0000
+
+k =  10\\
+1 : 40.483260\\
+2 : 26.716874\\
+3 : 25.000000\\
+4 : 22.191531\\
+5 : 17.674506\\
+6 : 15.812901\\
+7 : 13.351291\\
+8 : 12.187977\\
+9 : 9.120610\\
+10 : 9.000012\\
 
 \pagebreak
 
 %B
-\item Build a Count-Min Sketch (see L12.1.1) with k = 10 counters using t = 5 hash functions.
-      Run it on streams S1 and S2.\\
-      For both streams, report the estimated counts for objects a, b, and c. Just from the output of the sketch,
-      which of these objects, with probability $1 - \delta = 31/32$, might occur more than 20\% of the time?
+\item Find the smallest value k so that the L2 norm of A-Ak is less than 10\% that of A; k might
+      or might not be larger than 10.
 
-S1:\\
-a - 282879\\
-b - 226455\\
-c - 176507\\
+10\% Norm of A = 12.019431\\
+k =  20\\
+1 : 40.483260,    dif = 28.463829\\
+2 : 26.716874,    dif = 14.697443\\
+3 : 25.000000,    dif = 12.980569\\
+4 : 22.191531,    dif = 10.172100\\
+5 : 17.674506,    dif = 5.655075\\
+6 : 15.812901,    dif = 3.793471\\
+7 : 13.351291,    dif = 1.331860\\
+8 : 12.187977,    dif = 0.168547\\
+9 : 9.120610,     dif = 2.898821\\
+10 : 9.000012,    dif = 3.019419\\
+11 : 3.297869,    dif = 8.721562\\
+12 : 3.079406,    dif = 8.940024\\
+13 : 2.601031,    dif = 9.418400\\
+14 : 2.500037,    dif = 9.519393\\
+15 : 2.378471,    dif = 9.640960\\
+16 : 2.182791,    dif = 9.836640\\
+17 : 2.013798,    dif = 10.005632\\
+18 : 1.958065,    dif = 10.061366\\
+19 : 1.780673,    dif = 10.238757\\
+20 : 1.530487,    dif = 10.488944\\
 
-a and b might occur more than 20\%\\
-
-S2:\\
-a - 316651\\
-b - 193402\\
-c - 233373\\
-
-a and c might occur more than 20\%
 
 %C
-\item How would your implementation of these algorithms need to change (to answer the same
-      questions) if each object of the stream was a “word” seen on Twitter, and the stream contained all tweets
-      concatenated together?
+\item Treat the matrix as 1125 points in 30 dimensions. Plot the points in 2 dimensions in the way
+      that minimizes the sum of residuals squared.
 
-    The way the streaming is done would change. Instead of parsing the character we would have to parse the words.
-
-    For Misra-Gries the labels would have to change in order to fit the word and not just a character.
-
-    For the Count-Min Sketching nothing comes to mind that would have to change because the hashing of the word would
-    still be able to get hashed, as a word just as a single character.
 
 %D
 \item Describe one advantage of the Count-Min Sketch over the Misra-Gries Algorithm.\\
